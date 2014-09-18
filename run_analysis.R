@@ -9,9 +9,9 @@ run_analysis <- function() {
     }
     
     # Download and extract data set
-    fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-    download.file(fileUrl, destfile = "data.zip", method = "curl")
-    unzip(zipfile = "data.zip", overwrite = TRUE )
+#     fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+#     download.file(fileUrl, destfile = "data.zip", method = "curl")
+#     unzip(zipfile = "data.zip", overwrite = TRUE )
 
     dirData <- paste( wd ,"/UCI HAR Dataset/" , sep = "")
     
@@ -44,8 +44,11 @@ run_analysis <- function() {
     tableTestActivity$Activity <- as.factor(tableTestActivity$Activity)
     levels(tableTestActivity$Activity) <- tableActivityLabels$V2
     
-    # combine columns: subjects, data set and data type
+    # combine columns: subjects, activity and data set 
     dsTest <- cbind( tableTestSubjects , tableTestActivity, tableTest )
+    
+    # add data type
+    dsTest$datatype <- seq( from = 1, to = 1, length.out = nrow(dsTest) )
     
     # Train Data    
     fileTrainSubjects <- paste( dirData , "/train/subject_train.txt" , sep = "")
@@ -65,14 +68,17 @@ run_analysis <- function() {
     tableTrainActivity$Activity <- as.factor(tableTrainActivity$Activity)
     levels(tableTrainActivity$Activity) <- tableActivityLabels$V2
 
-    # combine columns: subjects, data set and data type
+    # combine columns: subjects, activity and data set 
     dsTrain <- cbind( tableTrainSubjects , tableTrainActivity, tableTrain )
 
+    # add data type
+    dsTrain$datatype <- seq( from = 2, to = 2, length.out = nrow(dsTrain) )
+    
     # Combine the Test and Training data sets
     combinedDs <- rbind( dsTest , dsTrain )
 
     # Extracts only the measurements on the mean and standard deviation for each measurement
-    newDS <- combinedDs[,c(1,2,grep("mean|std",ignore.case = FALSE, names(combinedDs)))]
+    newDS <- combinedDs[,c(1,2,grep("mean|std",ignore.case = FALSE, names(combinedDs)), ncol(combinedDs))]
 
     tbldf <- tbl_df( aggregate( newDS[,3:ncol(newDS)], newDS[,1:2], FUN = mean ))
 
