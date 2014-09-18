@@ -2,6 +2,7 @@ getting-and-cleaning-data
 =========================
 
 This repository contains the submision for the Coursera "Getting and Cleaning Data" course project.  It contains the following files:
+
 1. averageBySubjectAndActivity.txt: this a tidy data obtained by computing the averages for measurements from the following dataset, grouped by Subjects and Activity
 "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 
