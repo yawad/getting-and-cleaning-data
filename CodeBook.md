@@ -36,3 +36,4 @@ Columns of the data set:
 - fBodyAccJerkMag
 - fBodyGyroMag
 - fBodyGyroJerkMag
+- datatype (test = 2, training = 1)
