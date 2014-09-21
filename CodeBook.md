@@ -1,18 +1,15 @@
 Features: 
 =========
 
-This is a subset of the of the features that are found in this dataset: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+The tidy data set "averageBySubjectAndActivity.txt" contains a subset of the features that are found in the original dataset: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
 
-The original data set contains an extensive list of features from the accelerometerand gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+The original data set contains an extensive list of features from the accelerometer (tAcc-XYZ) and gyroscope ((tGyro-XYZ) 3-axial raw signals of a Samsung Galaxy S smartphone.  The `t`denotes the measurement in the time domain and the `f` is a measurement in the frequency domain.  These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.  
 
-Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
-
-Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
-
-These signals were used to estimate variables of the feature vector for each pattern:  
-'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
-
-The tidy dataset that was extracted contains the average of the mean() and std() variables for each feature grouped by Subject and Activity.
+The tidy dataset was computed by applying these threes steps to the original dataset:
+1. Each feature was grouped by Subject and Activity.
+2. The training and test observation were combined under a column `datatype`.  The training observation have datatype = 1, while the test observations have datatype = 1.
+3. The variables repressent the average of the mean() and std() variables for each feature.
 
 Columns of the data set:
 ========================
