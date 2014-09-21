@@ -7,9 +7,9 @@ The original data set contains an extensive list of features from the accelerome
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.  
 
 The tidy dataset was computed by applying these threes steps to the original dataset:
-1- Each feature was grouped by Subject and Activity.
-2- The training and test observation were combined under a column `datatype`.  The training observation have datatype = 1, while the test observations have datatype = 1.
-3- The variables repressent the average of the mean() and std() variables for each feature.
+  1. Each feature was grouped by Subject and Activity.
+  2. The training and test observation were combined under a column `datatype`.  The training observation have datatype = 1, while the test observations have datatype = 1.
+  3. The variables repressent the average of the mean() and std() variables for each feature.
 
 Columns of the data set:
 ========================
